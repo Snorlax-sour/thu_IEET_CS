@@ -1,9 +1,12 @@
 package main
 
 import (
+	"encoding/csv" // <-- 新增: CSV 套件
 	"fmt"
 	"log"
-	"regexp"
+	"os"     // <-- 新增: 檔案系統套件
+	"strconv"// <-- 新增: 用於將 int 轉為 string
+	"regexp" 
 	"strings"
 
 	"github.com/PuerkitoBio/goquery" // <--- 1. 新增 goquery 套件
@@ -25,6 +28,63 @@ type Course struct {
 func stripTags(html string) string {
 	re := regexp.MustCompile(`<.*?>`)
 	return re.ReplaceAllString(html, "")
+}
+
+// 回傳 error，讓呼叫者決定如何處理
+func write_csv_file(fileName string, contents []Course, header []string) error {
+	// 1. 檢查輸入，回傳錯誤而不是 panic
+	if fileName == "" {
+		return fmt.Errorf("檔名不可為空") // 使用 fmt.Errorf 建立一個新的 error
+	}
+	if len(contents) == 0 {
+		return fmt.Errorf("內容不可為空")
+	}
+	if len(header) == 0 {
+		return fmt.Errorf("標頭不可為空")
+	}
+    // 這個檢查邏輯有問題，我們應該比較 Course 結構的欄位數和 header 的長度
+	// reflect.TypeOf(Course{}).NumField() vs len(header)
+	// 但為了簡化，我們先假設 header 是對的
+
+	// 2. 建立檔案
+	file, err := os.Create(fileName)
+	if err != nil {
+		return fmt.Errorf("建立檔案 %s 失敗: %w", fileName, err) // 使用 %w 包裝原始錯誤
+	}
+	// 將 defer 緊跟在資源建立之後
+	defer file.Close()
+
+	// 寫入 BOM
+	file.WriteString("\xEF\xBB\xBF")
+
+	// 3. 建立 writer
+	writer := csv.NewWriter(file)
+    // 將 Flush 的 defer 也提前
+	defer writer.Flush() 
+
+	// 4. 寫入標頭
+	if err := writer.Write(header); err != nil {
+		return fmt.Errorf("寫入標頭失敗: %w", err)
+	}
+
+	// 5. 寫入內容
+	for _, course := range contents {
+		row := []string{
+			course.Code,
+			course.Type,
+			course.Name,
+			course.Credits,
+			strconv.Itoa(course.Hours),
+			course.Instructor,
+			course.Notes,
+		}
+		if err := writer.Write(row); err != nil {
+			return fmt.Errorf("寫入資料列失敗: %w", err)
+		}
+	}
+
+	fmt.Printf("成功將資料寫入 %s！\n", fileName)
+	return nil // 一切順利，回傳 nil (代表沒有錯誤)
 }
 
 // calculateHours 解析時間字串並計算總時數
@@ -77,9 +137,7 @@ func main() {
 		// 優化課程名稱處理：將 <br> 換成空格
 		courseNameHTML, _ := e.DOM.Find("td[data-title='課程名稱'] > a").Html()
 		course.Name = strings.TrimSpace(strings.ReplaceAll(courseNameHTML, "<br/>", " "))
-		got := Split_course_type_and_name(course.Name)
-		course.Type = got[0]
-		course.Name = got[1]
+		course.Type, course.Name = Split_course_type_and_name(course.Name)
 
 		course.Credits = strings.TrimSpace(e.DOM.Find("td[data-title='學分數']").Text())
 
@@ -88,17 +146,26 @@ func main() {
 		e.DOM.Find("td[data-title='授課教師'] a").Each(func(i int, s *goquery.Selection) {
 			instructors = append(instructors, s.Text())
 		})
-		course.Instructor = strings.Join(instructors, ", ")
-
+		course.Instructor = strings.Join(instructors, "與")
+		course.Instructor += "教授"
 		// 優化備註處理：保留換行並移除所有 HTML 標籤
 		notesHTML, _ := e.DOM.Find("td[data-title='備註']").Html()
 		notesWithNewlines := strings.ReplaceAll(notesHTML, "<br/>", "\n")
 		course.Notes = strings.TrimSpace(stripTags(notesWithNewlines))
 
 		timeLocation := e.DOM.Find("td[data-title='時間地點']").Text()
-		course.Hours = calculateHours(timeLocation)
 
-		courses = append(courses, course)
+		if graduate_course := strings.Contains(course.Notes, "碩"); graduate_course {
+			return //碩士不管，已經處理完成
+		}
+		course.Hours = calculateHours(timeLocation)
+		find_elective_course := strings.Index(course.Type, "選修")
+		if find_elective_course != -1 {
+			return //  選修不添加
+		} else { // else must in } follow
+			courses = append(courses, course)
+		}
+
 	})
 
 	c.OnScraped(func(r *colly.Response) {
@@ -113,11 +180,21 @@ func main() {
 	if err := c.Visit(url); err != nil {
 		log.Fatalf("無法訪問目標網址: %v", err)
 	}
+	header := []string{"選課代碼", "課程類別", "課程名稱", "學分數", "時數", "授課教師", "備註"}
+	var terms string
+	if term == "1"{
+		terms = "上"
+	}else if term == "2"{
+		terms = "下"
+	}
+	
+	file_name := year + "學年" + terms + "課程紀錄" + ".csv"
+	write_csv_file(file_name, courses, header)
 
 	// 輸出結果
 	fmt.Println("\n--- 爬取結果 ---")
-	for i, course := range courses {
-		fmt.Printf("\n[%d] ==============================================\n", i+1)
+	for _, course := range courses {
+		// fmt.Printf("\n[%d] ==============================================\n", _+1)
 		fmt.Printf("選課代碼: %s\n", course.Code)
 		fmt.Printf("課程屬性: %s\n", course.Type)
 		fmt.Printf("課程名稱: %s\n", course.Name)
@@ -126,4 +203,6 @@ func main() {
 		fmt.Printf("時數:     %d 小時\n", course.Hours)
 		fmt.Printf("備註:\n---\n%s\n---\n", course.Notes)
 	}
+	// fmt.Println("總課程數量: ", len(courses))
+
 }
