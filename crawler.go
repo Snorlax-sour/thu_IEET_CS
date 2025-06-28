@@ -29,13 +29,16 @@ type Course struct {
 func main() {
 	var year, term string
 	year_int := 108
-	term_int := 1
+
 	for year_int <= 113 {
+		term_int := 1
 		for term_int <= 2 {
+
 			year = strconv.Itoa(year_int)
 			term = strconv.Itoa(term_int)
 			url := fmt.Sprintf("https://course.thu.edu.tw/view-dept/%s/%s/350/", year, term)
 			fmt.Printf("\n正在爬取目標網址: %s\n\n", url)
+			term_int++ // forgot add
 
 			c := colly.NewCollector(
 				colly.UserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"),
@@ -116,6 +119,8 @@ func main() {
 			write_csv_file(file_name, courses, header)
 
 		}
+		year_int++ // forgot
+
 	}
 	// fmt.Print("請輸入學年 (例如: 112): ")
 	// if _, err := fmt.Scanln(&year); err != nil {

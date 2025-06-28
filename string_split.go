@@ -89,17 +89,23 @@ func SortCoursesAsTeam(courses []Course) []Course {
 	// 步驟 2: 將分組從 map 移至 slice 以便排序
 	groupsToSort := make([]CourseGroup, 0, len(courseGroupsMap))
 	for _, group := range courseGroupsMap {
-		fmt.Println("group content = ", group)
-		// 組內排序 (按 Code)
+		// 組內排序 (按 Code 的「數值」)
 		sort.Slice(group.Courses, func(i, j int) bool {
-			return group.Courses[i].Code < group.Courses[j].Code
+			codeI, _ := strconv.Atoi(group.Courses[i].Code)
+			codeJ, _ := strconv.Atoi(group.Courses[j].Code)
+			return codeI < codeJ
 		})
 		groupsToSort = append(groupsToSort, *group)
 	}
 
 	// 步驟 3: 組間排序 (按 MinCode)
 	sort.Slice(groupsToSort, func(i, j int) bool {
-		return groupsToSort[i].MinCode < groupsToSort[j].MinCode
+		minCodeI, _ := strconv.Atoi(groupsToSort[i].MinCode)
+		minCodeJ, _ := strconv.Atoi(groupsToSort[j].MinCode)
+
+		// 現在，我們比較的是兩個整數，而不是兩個字串
+		return minCodeI < minCodeJ
+		// return groupsToSort[i].MinCode < groupsToSort[j].MinCode
 	})
 
 	// 步驟 4: 建立最終排序好的列表
