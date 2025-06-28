@@ -57,8 +57,8 @@ func main() {
 
 				// 優化課程名稱處理：將 <br> 換成空格
 				courseNameHTML, _ := e.DOM.Find("td[data-title='課程名稱'] > a").Html()
-				course.Name = strings.TrimSpace(strings.ReplaceAll(courseNameHTML, "<br/>", " "))
-				course.Type, course.Name = Split_course_type_and_name(course.Name)
+				courseNameHTML = strings.TrimSpace(strings.ReplaceAll(courseNameHTML, "<br/>", " "))
+				course.Type, course.Name = Split_course_type_and_name(courseNameHTML)
 
 				course.Credits = strings.TrimSpace(e.DOM.Find("td[data-title='學分數']").Text())
 
