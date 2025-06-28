@@ -12,12 +12,28 @@ import (
 	"github.com/PuerkitoBio/goquery" // <--- 1. 新增 goquery 套件
 	"github.com/gocolly/colly/v2"
 )
+var gradeRegex = regexp.MustCompile(`\/\s*資工系\s*([A-Z0-9,]+)`)
 
+func ParseGradeFromNotes(notes string) string {
+	// 使用正則表達式尋找匹配項
+	matches := gradeRegex.FindStringSubmatch(notes)
+
+	// 如果找到了匹配項 (長度為 2：全匹配 + 1個捕獲組)
+	if len(matches) == 2 {
+		// matches[1] 就是我們捕獲的班級資訊，例如 "1A" 或 "3,4"
+		// 清理一下頭尾可能的多餘空白後回傳
+		return strings.TrimSpace(matches[1])
+	}
+
+	// 如果找不到，回傳一個預設值 "未知"
+	return "未知"
+}
 // Course 結構用於儲存單一課程的資訊
 type Course struct {
 	Code       string
 	Name       string
 	Type       string
+	Grade      string // <-- 新增此欄位
 	Instructor string
 	Notes      string
 	Credits    string
@@ -73,6 +89,7 @@ func write_csv_file(fileName string, contents []Course, header []string) error {
 			course.Code,
 			course.Type,
 			course.Name,
+			course.Grade,
 			course.Credits,
 			strconv.Itoa(course.Hours),
 			course.Instructor,
@@ -150,6 +167,9 @@ func main() {
 		course.Instructor += "教授"
 		// 優化備註處理：保留換行並移除所有 HTML 標籤
 		notesHTML, _ := e.DOM.Find("td[data-title='備註']").Html()
+		// 我們從包含 HTML 標籤的 notesHTML 進行解析，因為我們的正則需要它
+    	course.Grade = ParseGradeFromNotes(notesHTML) 
+ 		// 接著才移除 HTML 標籤，填充乾淨的 Notes 欄位
 		notesWithNewlines := strings.ReplaceAll(notesHTML, "<br/>", "\n")
 		course.Notes = strings.TrimSpace(stripTags(notesWithNewlines))
 
@@ -187,22 +207,26 @@ func main() {
 	}else if term == "2"{
 		terms = "下"
 	}
-	
+	// --- 在爬取完成後，寫入檔案前，呼叫新的排序函式 ---
+    fmt.Printf("\n爬取完成！共找到 %d 門課程，現正進行排序...\n", len(courses))
+    courses = SortCoursesAsTeam(courses) // << --- 在這裡呼叫！
+    fmt.Println("排序完成！")
+
 	file_name := year + "學年" + terms + "課程紀錄" + ".csv"
 	write_csv_file(file_name, courses, header)
 
 	// 輸出結果
-	fmt.Println("\n--- 爬取結果 ---")
-	for _, course := range courses {
-		// fmt.Printf("\n[%d] ==============================================\n", _+1)
-		fmt.Printf("選課代碼: %s\n", course.Code)
-		fmt.Printf("課程屬性: %s\n", course.Type)
-		fmt.Printf("課程名稱: %s\n", course.Name)
-		fmt.Printf("授課教師: %s\n", course.Instructor)
-		fmt.Printf("學分:     %s\n", course.Credits)
-		fmt.Printf("時數:     %d 小時\n", course.Hours)
-		fmt.Printf("備註:\n---\n%s\n---\n", course.Notes)
-	}
+	// fmt.Println("\n--- 爬取結果 ---")
+	// for _, course := range courses {
+	// 	// fmt.Printf("\n[%d] ==============================================\n", _+1)
+	// 	fmt.Printf("選課代碼: %s\n", course.Code)
+	// 	fmt.Printf("課程屬性: %s\n", course.Type)
+	// 	fmt.Printf("課程名稱: %s\n", course.Name)
+	// 	fmt.Printf("授課教師: %s\n", course.Instructor)
+	// 	fmt.Printf("學分:     %s\n", course.Credits)
+	// 	fmt.Printf("時數:     %d 小時\n", course.Hours)
+	// 	fmt.Printf("備註:\n---\n%s\n---\n", course.Notes)
+	// }
 	// fmt.Println("總課程數量: ", len(courses))
 
 }
