@@ -1,0 +1,2360 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>東海大學課程資訊網 - 資訊工程學系的所有課程</title>
+	<meta name="description" content="目前正在顯示資訊工程學系的所有課程">
+	<meta name="author" content="東海大學">
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+  ================================================== -->
+	<link rel="stylesheet" href="/stylesheets/skeleton.css">
+	<link rel="stylesheet" href="/stylesheets/style.css">
+
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600' rel='stylesheet' type='text/css'>	
+
+	<!-- JS
+  ================================================== -->
+
+    <!-- jQuery -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="/js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="/js/common.js"></script>
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="/images/favicon.png">
+	<style>
+	a,a:visited, a:hover  { color: #213e74 }
+	a.button, a.button_hilite { color: #fff}
+    .swal2-title {font-family: arial,"Microsoft JhengHei","微軟正黑體",sans-serif !important;}
+        .deptlist .button { font-size: 9pt; padding: 3pt}
+        .b .currcode { font-size:14pt}
+    </style>
+</head>
+<body >
+  <div id="wrapper">
+  
+	<div class="container">
+	
+		<div class="header clearfix row">
+			<div class="eight columns header_left">
+				<a href="/index"><img src="/images/logob.png"/></a>
+			</div>
+			<div class="eight columns">
+				<div class="header_right">
+					<div class="header_contacts clearfix">
+                        <div class="header_people"><a href="/view-mycourse">我的課表</a> | <a href="/view-myping">追蹤清單</a> | <a href="/oauthlogin">[目前尚未登入，點此登入]</a>                         <a href="/lang_set/en_US">[English Version]</a>                        </div>
+
+					</div>
+					<div class="header_soc_search clearfix">
+						<div class="header_search">
+							<form class="search" action="/search/" method="get">
+								<button class="button_search"></button>
+                                <input type="hidden" name="year" value="114">
+                                <input type="hidden" name="term" value="1">
+								<input name="s" id="s" type="text" value="什麼都可以搜尋" onclick="this.value ='';"></span>
+							</form>
+						</div>
+
+					</div>				
+				</div>
+			</div>
+		</div>
+		</div><div class="container" id="content">
+		
+		<!-- Main Navigation -->
+		<div class="row no_bm">
+			<div class="dark_menu sixteen columns">
+				<div id="menu">
+					<ul>
+						<li><a href="/index"><span class="home_icon"></span></a></li>
+			<!--		  	<li><a href="/index">首頁</a></li> -->
+					    <li><a href="/view-dept/112/1/">依開課單位瀏覽</a></li>
+							<li><a href="/view-ge/112/1/">通識課程</a>
+							</li>
+                                       <li><a href="#">英語授課<span></span></a>
+                            <div>
+                                <ul>
+                                    <li><a href="/eng-substitute"><span>英文替代課程</span></a></li>
+                                    <li><a href="/eng-pro"><span>英語授課課程</span></a></li>
+  <li><a href="/view-dept/112/1/S27/"><span>大一英文</span></a></li>
+  <li><a href="/view-dept/112/1/S39"><span>大二英文</span></a></li>
+  <li><a href="/view-dept/112/1/S36"><span>興趣選修英文</span></a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+ 			
+		    <li><a href="#">跨領域課程<span></span></a>
+                            <div>
+                                <ul>
+                                    <li><a href="https://course.thu.edu.tw/view-taica/"><span>TAICA課程專區</span></a></li>
+                                    <li><a href="https://cross.service.thu.edu.tw/curr-b"><span>輔系</span></a></li>
+                                    <li><a href="https://cross.service.thu.edu.tw/curr-a"><span>雙主修</span></a></li>
+                                    <li><a href="https://cross.service.thu.edu.tw/curr-c"><span>學分學程</span></a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="/apply">表單申請</a></li>
+							<li></li>
+                        <!--    <li><a href="/view-mywill">志願管理</a></li>
+                            <li></li>-->
+                        <!--<li><a href="/contact">聯絡我們</a></li>-->
+					</ul>
+				</div>
+				
+				
+				<select id="select_menu" onchange="location = this.value">
+			  		<option value="">※※手機介面，請按此選擇功能※※</option>
+			        <option value="/index">首頁</option>
+			        <option value="/view-dept">依開課單位瀏覽</option>
+					<option value="/view-ge">通識課程</a></option>
+					<option value="/view-ge/112/1/S01">├通識人文</a></option>
+					<option value="/view-ge/112/1/S02">├通識自然</a></option>
+					<option value="/view-ge/112/1/S03">├通識社會</a></option>
+					<option value="/view-ge/112/1/S38">通識跨領域</a></option>
+                    <option value="/cross">跨領域課程(輔系、雙主修、學分學程)</option>					<option value="/apply">表單申請</option>
+					<option value="/eng-substitute">英文替代課程</option>
+					<option value="/view-mywill">志願管理</option>
+                </select>
+						
+			</div>
+		</div>
+		<!-- Main Navigation::END -->
+
+		<div id="mainContent" >
+		
+		<div class="row">
+			<div class="sixteen columns">
+				<div class="breadcrumb">
+			        <a href="/" class="first_bc"><span>首頁</span></a>
+			        <a href="/view-dept" class="last_bc"><span>依開課單位瀏覽課程</span></a>
+			    </div>
+			   <div class="page_heading"><h1>系所開課總覽：112學年度第1學期</h1></div>
+			</div>
+		</div>
+		<div class="row">
+
+
+		            <div class="sixteen columns clearfix">
+                                <h2 class="title"><span>資訊工程學系Department of Computer Science and Information Engineering0000 (共65門)</span></h2>
+                <p>
+
+                    <table class="aqua_table" width="100%"><tr><th>教育目標</th><th>核心能力</th></tr><tr><td valign="top"><a href="http://140.128.97.232/wcjs/teac2_desc/11_Qmajrset_open.php?vid2=A*350">教育目標關聯表</a></td><td><a href="http://140.128.97.232/wcjs/teac2_desc/12_Qcurrset_open.php?vid2=A*350">課程與核心能力對照表</a></td></tr></table>                </p>
+                <p>上課日篩選：<a href="/view-dept/112/1/350/1">星期一</a>
+                    | <a href="/view-dept/112/1/350/2">星期二</a>
+                    | <a href="/view-dept/112/1/350/3">星期三</a>
+                    | <a href="/view-dept/112/1/350/4">星期四</a>
+                    | <a href="/view-dept/112/1/350/5">星期五</a>
+                    | <a href="/view-dept/112/1/350/6">星期六</a>
+                    | <a href="/view-dept/112/1/350/">全部</a>
+
+                    (目前顯示所有課程)                </p>
+                
+				<table class="aqua_table" width="100%" id="no-more-tables">
+						<thead>
+						<tr>
+							<th class="b" nowrap>選課代碼</th>
+							<th>課程名稱</th>
+                            <th nowrap="nowrap">學分數</th>
+                           <!-- <th nowrap="nowrap">追蹤</th> -->
+							<th>時間地點</th>
+							<th>授課教師</th>
+							<th style="min-width:81pt">人數狀態</th>
+							<th>備註</th>
+						</tr>
+						</thead>
+		<tbody>
+		
+				
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1011" class="currcode">
+
+                                    1011                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1011">
+                                必修-微積分甲〈一〉<BR>Calculus A (I)                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期二/9,三/9[H307]
+星期一/1,2[H308]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/jiaweilin class=''>林佳威</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 76<BR>
+                                    餘額 -6                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/24383">24383</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系1<BR>資工1ABC單號同學修課								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1012" class="currcode">
+
+                                    1012                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1012">
+                                必修-計算機概論<BR>Introduction to Computer Science                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期二/6,7,8[C118]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/chlin class=''>林祝興</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 60<BR>
+                                    餘額 10                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28090">28090</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系1A<BR>								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1013" class="currcode">
+
+                                    1013                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1013">
+                                必修-Python程式設計<BR>Programming in Python                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期二/3,4,三/6,7[ST436]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/josephchiao class=''>焦信達</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 60
+                                
+                                    現選 52<BR>
+                                    餘額 8                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/49085">49085</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系1A<BR>								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1014" class="currcode">
+
+                                    1014                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1014">
+                                必修-機率學<BR>Probability                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期一/6,7,8[C118]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/shihyh class=''>黃士耘</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 50<BR>
+                                    餘額 20                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/24084">24084</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系1A<BR>可替代機率統計								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1015" class="currcode">
+
+                                    1015                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1015">
+                                必修-微積分甲〈一〉<BR>Calculus A (I)                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期五/6,7[H207]
+星期二/1,三/9[H208]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/jiaweilin class=''>林佳威</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 75<BR>
+                                    餘額 -5                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/24383">24383</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系1<BR>資工1ABC雙號同學修課								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1016" class="currcode">
+
+                                    1016                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1016">
+                                必修-計算機概論<BR>Introduction to Computer Science                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期一/6,7,8[ST436]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/cmlai class=''>賴俊鳴</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 60
+                                
+                                    現選 54<BR>
+                                    餘額 6                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28090">28090</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系1B<BR>								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1017" class="currcode">
+
+                                    1017                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1017">
+                                必修-離散數學<BR>Discrete Mathematics                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期五/2,3,4[H216]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/yifung class=''>黃宜豊</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 85
+                                
+                                    現選 81<BR>
+                                    餘額 4                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28019">28019</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系1B<BR>								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1018" class="currcode">
+
+                                    1018                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1018">
+                                必修-Python程式設計<BR>Programming in Python                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期三/2[ST023]
+星期四/6,7,8[ST436]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/josephchiao class=''>焦信達</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 60
+                                
+                                    現選 55<BR>
+                                    餘額 5                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/49085">49085</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系1B<BR>								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1020" class="currcode">
+
+                                    1020                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1020">
+                                必修-計算機概論<BR>Introduction to Computer Science                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期二/2,3,4[C202]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/chensw class=''>陳仕偉</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 57<BR>
+                                    餘額 13                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28090">28090</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系1C<BR>								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1021" class="currcode">
+
+                                    1021                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1021">
+                                必修-機率學<BR>Probability                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期三/6,7,8[C202]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/shihyh class=''>黃士耘</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 62<BR>
+                                    餘額 8                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/24084">24084</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系1C<BR>可替代機率統計								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1022" class="currcode">
+
+                                    1022                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1022">
+                                必修-Python程式設計<BR>Programming in Python                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期二/6,7,8[ST436]
+星期四/7[ST523]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/cmlai class=''>賴俊鳴</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 60
+                                
+                                    現選 52<BR>
+                                    餘額 8                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/49085">49085</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系1C<BR>								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1023" class="currcode">
+
+                                    1023                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1023">
+                                必修-資料結構<BR>Data Structures                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期二/2,3,4[C114]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/rickysheu class=''>許瑞愷</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 73<BR>
+                                    餘額 -3                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28026">28026</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系2A<BR>								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1024" class="currcode">
+
+                                    1024                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1024">
+                                必修-線性代數<BR>Linear Algebra                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期一/2,3,4[C113]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/yifung class=''>黃宜豊</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 85
+                                
+                                    現選 81<BR>
+                                    餘額 4                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/21020">21020</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系2A<BR>								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1025" class="currcode">
+
+                                    1025                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1025">
+                                必修-機率學<BR>Probability                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期一/6,7,8[C215]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/thhsieh class=''>謝宗澔</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 55<BR>
+                                    餘額 15                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/24084">24084</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系2A<BR>可替代機率統計								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1026" class="currcode">
+
+                                    1026                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1026">
+                                必選-硬體描述語言<BR>Hardware Description Language                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期五/7,8,9[ST023]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/jcliu class=''>劉榮春</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 60
+                                
+                                    現選 66<BR>
+                                    餘額 -6                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/69f35">69f35</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系2A<BR>								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1027" class="currcode">
+
+                                    1027                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1027">
+                                必選-組合語言<BR>Assembly Languages                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期三/2,3,4[ST436]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/jcliu class=''>劉榮春</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 60
+                                
+                                    現選 63<BR>
+                                    餘額 -3                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28020">28020</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系2A<BR>								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1028" class="currcode">
+
+                                    1028                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1028">
+                                必選-JAVA程式設計<BR>JAVA Programming                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期三/5,6,7[C114]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/chensw class=''>陳仕偉</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 60
+                                
+                                    現選 52<BR>
+                                    餘額 8                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28408">28408</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系2A<BR>限資二A修習								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1029" class="currcode">
+
+                                    1029                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1029">
+                                必修-資料結構<BR>Data Structures                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期一/2,3,4[C119]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/lunchi class=''>陳倫奇</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 61<BR>
+                                    餘額 9                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28026">28026</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系2B<BR>								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1030" class="currcode">
+
+                                    1030                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1030">
+                                必修-機器學習導論<BR>Introduction to Machine Learning                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期五/6,7,8[ST020]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/shihc class=''>石志雄</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 60
+                                
+                                    現選 66<BR>
+                                    餘額 -6                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28524">28524</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系2B<BR>資電組分組選修								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1031" class="currcode">
+
+                                    1031                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1031">
+                                必選-AI實作（二）<BR>Design and Implementation in Artificial Intelligence (Part 2)                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期一/6,7,8[ST523]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/shouyu class=''>李守彧</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 60
+                                
+                                    現選 62<BR>
+                                    餘額 -2                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28523">28523</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系2B<BR>資電組分組選修								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1032" class="currcode">
+
+                                    1032                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1032">
+                                必選-自然語言處理<BR>Natural Language Processing                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期二/2,3,4[LIB009]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/kevin.liao class=''>廖元勳</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 60
+                                
+                                    現選 61<BR>
+                                    餘額 -1                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28054">28054</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系2B<BR>								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1033" class="currcode">
+
+                                    1033                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1033">
+                                必修-資料結構<BR>Data Structures                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期一/2,3,4[C202]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/ychu class=''>胡育誠</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 60<BR>
+                                    餘額 10                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28026">28026</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系2C<BR>								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1034" class="currcode">
+
+                                    1034                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1034">
+                                必修-機器學習導論<BR>Introduction to Machine Learning                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期五/3[LAN111]
+星期四/3,4[ST020]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/chensw class=''>陳仕偉</a> <a href=/view-teacher-profile/ class=''>賴泳瑄</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 68<BR>
+                                    餘額 2                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28524">28524</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系2C<BR>資電組分組選修								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1035" class="currcode">
+
+                                    1035                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1035">
+                                必修-線性代數<BR>Linear Algebra                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期三/2,3,4[HT007]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/yifung class=''>黃宜豊</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 85
+                                
+                                    現選 87<BR>
+                                    餘額 -2                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/21020">21020</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系2C<BR>								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1036" class="currcode">
+
+                                    1036                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1036">
+                                必修-統計學<BR>Statistics                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期二/2,3,4[LAN111]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/thhsieh class=''>謝宗澔</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 61<BR>
+                                    餘額 9                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/24030">24030</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系2C<BR>可替代機率統計								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1037" class="currcode">
+
+                                    1037                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1037">
+                                必選-物件導向程式設計<BR>Object-Oriented Programming                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期四/6,7,8[ST338]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/shihc class=''>石志雄</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 60
+                                
+                                    現選 64<BR>
+                                    餘額 -4                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28055">28055</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系2C<BR>								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1038" class="currcode">
+
+                                    1038                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1038">
+                                必修-演算法<BR>Algorithms                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期三/6,7,8[H104]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/ylhuang class=''>黃育仁</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 130
+                                
+                                    現選 106<BR>
+                                    餘額 24                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/49030">49030</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系3A,3C<BR>3A與3C併班上課；								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1039" class="currcode">
+
+                                    1039                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1039">
+                                必修-計算機組織<BR>Computer Organization                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期一/6,7,二/5[SS101]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/ctyang class=''>楊朝棟</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 130
+                                
+                                    現選 105<BR>
+                                    餘額 25                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/49026">49026</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系3A,3C<BR>3A與3C併班上課；								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1040" class="currcode">
+
+                                    1040                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1040">
+                                必修-微算機系統<BR>Microcomputer Systems                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期三/2,3,4[C106]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/shihyh class=''>黃士耘</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 40<BR>
+                                    餘額 30                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28182">28182</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系3A<BR>								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1041" class="currcode">
+
+                                    1041                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1041">
+                                必修-微算機系統實驗<BR>Microcomputer Systems Lab.                                </a>
+
+                            </td>
+							<td data-title="學分數">1-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期二/6,7,8[ST122]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/shihyh class=''>黃士耘</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 60
+                                
+                                    現選 44<BR>
+                                    餘額 16                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28183">28183</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系3A<BR>人工選課；第一堂課進行分組，未到者刪除選課								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1042" class="currcode">
+
+                                    1042                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1042">
+                                必選-資料庫<BR>Data Base System                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期一/2,3,4[C106]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/leufy class=''>呂芳懌</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 46<BR>
+                                    餘額 24                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28042">28042</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系3A<BR>								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1043" class="currcode">
+
+                                    1043                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1043">
+                                必修-計算機組織<BR>Computer Organization                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期二/2,3,4[H308]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/ychu class=''>胡育誠</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 63<BR>
+                                    餘額 7                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/49026">49026</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系3B<BR>								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1044" class="currcode">
+
+                                    1044                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1044">
+                                必修-資料庫<BR>Data Base System                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期一/2,3,4[ST021]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/kevin.liao class=''>廖元勳</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 49<BR>
+                                    餘額 21                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28042">28042</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系3B<BR>								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1045" class="currcode">
+
+                                    1045                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1045">
+                                必修-演算法 <BR>Introduction to Algorithms                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期二/6,7,8[HT007]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/ylhuang class=''>黃育仁</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 80
+                                
+                                    現選 90<BR>
+                                    餘額 -10                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/36170">36170</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系3B<BR>重修請修此班								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1046" class="currcode">
+
+                                    1046                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1046">
+                                必選-深度學習應用<BR>Deep Learning Applications                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期三/8,9,10[ST436]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/lbchen class=''>陳隆彬</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 60<BR>
+                                    餘額 10                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28567">28567</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系3B<BR>可替代深度學習基礎								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1047" class="currcode">
+
+                                    1047                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1047">
+                                必選-迴歸分析技術及應用<BR>Techniques and Application on Regression Analysis                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期一/7,8,9[C119]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/admor class=''>江輔政</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 50<BR>
+                                    餘額 20                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28557">28557</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系3B<BR>AI組分組選修								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1048" class="currcode">
+
+                                    1048                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1048">
+                                必修-軟體工程（二）<BR>Software Engineering (II)                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期四/2,3,4[C119]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/shouyu class=''>李守彧</a> <a href=/view-teacher-profile/cchu class=''>朱正忠</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 53<BR>
+                                    餘額 17                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28526">28526</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系3C<BR>								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1049" class="currcode">
+
+                                    1049                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1049">
+                                必選-資料庫<BR>Data Base System                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期三/2,3,4[LIB009]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/kevin.liao class=''>廖元勳</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 59<BR>
+                                    餘額 11                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28042">28042</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系3C<BR>								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1050" class="currcode">
+
+                                    1050                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1050">
+                                必修-專題實作<BR>Practice of Projects in  Computer Engineering                                </a>
+
+                            </td>
+							<td data-title="學分數">2-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期三/5,6[HT007]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/ctyang class=''>楊朝棟</a> <a href=/view-teacher-profile/chlin class=''>林祝興</a> <a href=/view-teacher-profile/cmlai class=''>賴俊鳴</a> <a href=/view-teacher-profile/chensw class=''>陳仕偉</a> <BR><a href=/view-teacher-profile/jwo class=''>周忠信</a> <a href=/view-teacher-profile/josephchiao class=''>焦信達</a> <a href=/view-teacher-profile/rickysheu class=''>許瑞愷</a> <BR><a href=/view-teacher-profile/kevin.liao class=''>廖元勳</a> <a href=/view-teacher-profile/cttsai class=''>蔡清欉</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 66<BR>
+                                    餘額 4                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28350">28350</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系4<BR>人工選課。								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1051" class="currcode">
+
+                                    1051                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1051">
+                                必修-專題實作<BR>Practice of Projects in  Computer Engineering                                </a>
+
+                            </td>
+							<td data-title="學分數">2-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期三/5,6[HT007]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/leufy class=''>呂芳懌</a> <a href=/view-teacher-profile/yifung class=''>黃宜豊</a> <a href=/view-teacher-profile/ylhuang class=''>黃育仁</a> <a href=/view-teacher-profile/jcliu class=''>劉榮春</a> <BR><a href=/view-teacher-profile/lbchen class=''>陳隆彬</a> <a href=/view-teacher-profile/shouyu class=''>李守彧</a> <a href=/view-teacher-profile/shihyh class=''>黃士耘</a> <BR><a href=/view-teacher-profile/shihc class=''>石志雄</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 77<BR>
+                                    餘額 -7                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28350">28350</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系4<BR>人工選課。								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1052" class="currcode">
+
+                                    1052                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1052">
+                                選修-數位訊號處理導論<BR>Digital Signal Processing                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期二/10,11,12[ST020]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/jcliu class=''>劉榮春</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 38<BR>
+                                    餘額 32                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28306">28306</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系2-4<BR>資電組分組選修								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1053" class="currcode">
+
+                                    1053                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1053">
+                                選修-JAVA程式設計<BR>JAVA Programming                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期二/9,10,11[ST436]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/shouyu class=''>李守彧</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 60
+                                
+                                    現選 65<BR>
+                                    餘額 -5                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28408">28408</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系2-4<BR>重修、輔系、雙學位同學修課								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1054" class="currcode">
+
+                                    1054                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1054">
+                                選修-企業計算<BR>Enterprise Computing                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期五/6,7,8[C202]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/juy class=''>朱允執</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 34<BR>
+                                    餘額 36                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28448">28448</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系2-4<BR>軟工組分組選修								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1055" class="currcode">
+
+                                    1055                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1055">
+                                選修-AIOT應用開發<BR>AIoT Application Development                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期四/2,3,4[C214]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/josephchiao class=''>焦信達</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 71<BR>
+                                    餘額 -1                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28532">28532</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系3,4<BR>資電組、軟工組分組選修								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1056" class="currcode">
+
+                                    1056                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1056">
+                                選修-人工智慧與資訊安全<BR>Artificial Intelligence Applications to Cybersecurity                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期五/2,3,4[ST405]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/shihc class=''>石志雄</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 60
+                                
+                                    現選 19<BR>
+                                    餘額 41                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28519">28519</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系3,4<BR>AI組分組選修								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1057" class="currcode">
+
+                                    1057                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1057">
+                                選修-軟體專案管理<BR>Software Project Management                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期四/7,8,9[C119]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/admor class=''>江輔政</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 35
+                                
+                                    現選 41<BR>
+                                    餘額 -6                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/49009">49009</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系3,4<BR>AI組、軟工組分組選修								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1058" class="currcode">
+
+                                    1058                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1058">
+                                選修-強化學習<BR>Reinforcement Learning                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期五/6,7,8[ST436]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/lbchen class=''>陳隆彬</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 60
+                                
+                                    現選 15<BR>
+                                    餘額 45                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28558">28558</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系3,4<BR>AI組分組選修								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1059" class="currcode">
+
+                                    1059                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1059">
+                                選修-物件導向分析與設計<BR>Object Oriented Analysis and Design                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期五/2,3,4[ST436]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/shouyu class=''>李守彧</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 60
+                                
+                                    現選 51<BR>
+                                    餘額 9                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28339">28339</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系3,4<BR>軟工組分組選修								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1060" class="currcode">
+
+                                    1060                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1060">
+                                選修-自由開源軟體<BR>Open Source Platforms and Applications                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期二/6,7,8[ST405]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/lbchen class=''>陳隆彬</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 22<BR>
+                                    餘額 48                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28494">28494</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系3,4<BR>軟工組分組選修								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1061" class="currcode">
+
+                                    1061                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1061">
+                                選修-物聯網與感測<BR>Internet of Things (IoT) and Sensors                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期三/7,8,9[ST405]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/cmlai class=''>賴俊鳴</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 60
+                                
+                                    現選 22<BR>
+                                    餘額 38                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28485">28485</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系3,4<BR>								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1062" class="currcode">
+
+                                    1062                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1062">
+                                選修-程式設計檢定<BR>Collegiate Programming Examination(CPE)                                </a>
+
+                            </td>
+							<td data-title="學分數">1-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期五/5[ST436]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/lbchen class=''>陳隆彬</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 99
+                                
+                                    現選 104<BR>
+                                    餘額 -5                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28470">28470</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系2-4<BR>限2-4年級未通過檢定同學，不提供推廣部學員選課								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/1063" class="currcode">
+
+                                    1063                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/1063">
+                                選修-業界專題<BR>Industry Projects                                </a>
+
+                            </td>
+							<td data-title="學分數">1-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">無資料</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/winston class=''>羅文聰</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 19<BR>
+                                    餘額 51                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28514">28514</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系4<BR>人工選課，時間另訂								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/5691" class="currcode">
+
+                                    5691                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/5691">
+                                必修-碩士論文<BR>Masters’ Thesis                                </a>
+
+                            </td>
+							<td data-title="學分數">6-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">無資料</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/ class=''>資工教師</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 26<BR>
+                                    餘額 44                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/68001">68001</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工碩2-4<BR>								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/5692" class="currcode">
+
+                                    5692                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/5692">
+                                必修-專題討論（一）<BR>Seminar.  (I)                                </a>
+
+                            </td>
+							<td data-title="學分數">1-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">無資料</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/ylhuang class=''>黃育仁</a> <a href=/view-teacher-profile/drchen class=''>陳達人</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 15<BR>
+                                    餘額 55                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28126">28126</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工碩1<BR>時間另定；人工選課。								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/5693" class="currcode">
+
+                                    5693                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/5693">
+                                必修-專題討論（三）<BR>Seminar (III)                                </a>
+
+                            </td>
+							<td data-title="學分數">1-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">無資料</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/ychu class=''>胡育誠</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 20<BR>
+                                    餘額 50                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28134">28134</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工碩2<BR>時間另定；人工選課。								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/5694" class="currcode">
+
+                                    5694                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/5694">
+                                選修-數位轉型策略與實務<BR>The Strategies and Practice of Digital Transformation                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期二/11,12,13[ST405]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/jwo class=''>周忠信</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 4<BR>
+                                    餘額 66                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28548">28548</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工碩,碩專1,2<BR>數創碩士學程5819併班								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/5695" class="currcode">
+
+                                    5695                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/5695">
+                                選修-智慧物聯網系統實作<BR>The Implementation of AIoT Systems                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期二/8,9,10[ST019]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/ctyang class=''>楊朝棟</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 60
+                                
+                                    現選 22<BR>
+                                    餘額 38                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28562">28562</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系4,碩,碩專1,2<BR>大四可選								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/5696" class="currcode">
+
+                                    5696                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/5696">
+                                選修-資訊管理<BR>Information Management                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期二/2,3,4[ST405]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/juy class=''>朱允執</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 14<BR>
+                                    餘額 56                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28108">28108</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工碩,碩專1,2<BR>								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/5697" class="currcode">
+
+                                    5697                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/5697">
+                                選修-創意物聯網應用設計<BR>Applications and Designs of IoT Innovation                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期三/2,3,4[ST405]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/shihc class=''>石志雄</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 18<BR>
+                                    餘額 52                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28475">28475</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系4,碩,碩專1,2<BR>大四可選								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/5698" class="currcode">
+
+                                    5698                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/5698">
+                                選修-資料探勘實務<BR>Data Mining: Foundations and Practice                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期四/5,6,7[ST405]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/ychu class=''>胡育誠</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 18<BR>
+                                    餘額 52                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28497">28497</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工碩,碩專1,2<BR>								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/5699" class="currcode">
+
+                                    5699                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/5699">
+                                選修-深度學習<BR>Deep Learning                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期一/6,7,8[ST405]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/lbchen class=''>陳隆彬</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 22<BR>
+                                    餘額 48                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28498">28498</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工碩,碩專1,2<BR>								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/5700" class="currcode">
+
+                                    5700                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/5700">
+                                選修-5G網路垂直應用與安全<BR>5G Network Applications and its Security                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期四/2,3,4[ST405]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/leufy class=''>呂芳懌</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 17<BR>
+                                    餘額 53                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28568">28568</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工碩,碩專1,2<BR>								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/5701" class="currcode">
+
+                                    5701                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/5701">
+                                必修-專題討論（一）<BR>Seminar.  (I)                                </a>
+
+                            </td>
+							<td data-title="學分數">1-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">無資料</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/rickysheu class=''>許瑞愷</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 70
+                                
+                                    現選 14<BR>
+                                    餘額 56                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28126">28126</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工碩1<BR>時間另訂								
+								</td>
+						</tr>
+								
+                        <tr class='odd'>
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/8101" class="currcode">
+
+                                    8101                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/8101">
+                                選修-Linux作業系統<BR>Linux Operating System                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期三/10,11,12[ST020]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/erick class=''>張廣欽</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 45
+                                
+                                    現選 46<BR>
+                                    餘額 -1                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28305">28305</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系2,資工系3<BR>資電、AI、軟工分組選修								
+								</td>
+						</tr>
+								
+                        <tr >
+							<td data-title="選課代碼" class="b">
+                                <a href="/view/112/1/8102" class="currcode">
+
+                                    8102                                </a>
+                                <BR>
+                                </td>
+							<td data-title="課程名稱">
+
+                                                                <a href="/view/112/1/8102">
+                                選修-WEB程式設計<BR>Web Programming                                </a>
+
+                            </td>
+							<td data-title="學分數">3-0</td>
+                       <!--     <td data-title="追蹤"></td>-->
+                            <td data-title="時間地點">星期四/10,11,12[ST436]
+</a></td>
+							<td data-title="授課教師" >
+
+                            <a href=/view-teacher-profile/jalen class=''>林子翔</a>
+
+
+                            </td>
+							<td data-title="人數狀態">
+                                上限 60
+                                
+                                    現選 65<BR>
+                                    餘額 -5                                    							</td>
+							<td data-title="備註"><a style="border-width:1px; border-style:solid; border-color:#0f0f0f;" href="/course-profile/28527">28527</a> <a href="/view-dept/112/1/350/">資訊工程學系</a>  / 資工系2<BR>資電、AI、軟工分組選修								
+								</td>
+						</tr>
+											</tbody>
+				</table>
+						</div>
+		</div>
+		
+		
+		<div class="clear h20"></div>	
+		
+		
+				</div>
+        </div>
+
+		
+	</div>
+	<!-- Footer -->
+	<div id="footer" class="container">
+		<div class="row footer_inside">
+		  <div class="six columns">
+		    <h3>關於課程資訊網</h3>
+		    <p>課程資訊網將作為學生查詢課程資訊與搭配之助教、大班教學助理等相關資源之整合入口。</p>
+		  </div>
+		  <div class="four columns">
+		    <h3 class="margined_left">站內連結</h3>
+		    <ul class="margined_left">
+		    	<li><a href="/index">首頁</a></li>
+				<li><a href="/view-dept">開課單位一覽</a></li>
+                <li><a href="/view-ge">通識課程一覽</a></li>
+		    </ul>
+              <ul class="margined_right">
+                  <li><a href="/cross">跨領域課程</a></li>
+                  <li><a href="/apply">表單申請</a></li>
+                  <li><a href="/opendata">開放資料</a></li>
+                  <li><a href="/view-dept-teacher">教師清單</a></li>
+              </ul>
+		  </div>
+		  <div class="four columns">
+		  	<h3>聯絡我們</h3>
+		  	<div class='icon_phone' title='Phone'>(04)2359 0121 轉 22302</div>
+		    <div class='icon_mail' title='Email'>course@thu.edu.tw</div>
+		    <div class='icon_loc' title='Location'>教務處註課組</div>
+		    
+		  	<div class='clear'></div>
+		  	<div class='h10'></div>
+		
+		  </div> 
+	  </div> 
+	  <div class="clear"></div>
+	  <div class="footer_btm">
+	  	<div class="footer_btm_inner"> 	  	
+	  
+		  	<div id="powered"><a href="http://www.thu.edu.tw" target="_blank">東海大學</a> 版權所有 &copy; 2015 - 2025 &nbsp; | &nbsp; <a href="http://www.thu.edu.tw" target="_blank">東海大學</a> &nbsp;| &nbsp; <a href="http://itservice.thu.edu.tw" target="_blank">電算中心</a> &nbsp; | &nbsp; <a href="http://academic.thu.edu.tw" target="_blank">教務處</a> &nbsp; | &nbsp; 0.4448s | C 2</div>
+		</div>	  
+	  </div>
+	</div>
+	<!-- Footer::END -->
+	
+  </div>
+<script type="text/javascript" src="/js/retina.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58450458-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-58450458-2');
+</script>
+<script src="/js/intercooler-1.2.3.min.js" type="text/javascript"></script>
+  <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css" rel="stylesheet">
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top',
+        showConfirmButton: false,
+        timer: 10000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+    const Modal = Swal.mixin({
+        position: 'center',
+        showConfirmButton: true,
+        timer: 10000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+</script>
+</body>
+</html>
