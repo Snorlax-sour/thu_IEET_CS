@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/csv" // <-- 新增: CSV 套件
 	"fmt"
+	"log"
 	"os" // <-- 新增: 檔案系統套件
 	"regexp"
 	"sort"
@@ -201,6 +202,11 @@ func ParseGradeFromNotes(notes string) string {
 		// matches[1] 就是我們捕獲的班級資訊，例如 "1A" 或 "3,4"
 		// 清理一下頭尾可能的多餘空白後回傳
 		return strings.TrimSpace(matches[1])
+	}else{
+		log.Printf("other info")
+		for _,content := range matches{
+			log.Println(content, notes)
+		}
 	}
 
 	// 如果找不到，回傳一個預設值 "未知"

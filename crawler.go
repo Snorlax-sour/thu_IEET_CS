@@ -38,7 +38,6 @@ func main() {
 			term = strconv.Itoa(term_int)
 			url := fmt.Sprintf("https://course.thu.edu.tw/view-dept/%s/%s/350/", year, term)
 			fmt.Printf("\n正在爬取目標網址: %s\n\n", url)
-			term_int++ // forgot add
 
 			c := colly.NewCollector(
 				colly.UserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"),
@@ -54,6 +53,13 @@ func main() {
 				course := Course{}
 
 				course.Code = strings.TrimSpace(e.DOM.Find("td[data-title='選課代碼']").Text())
+				course.Code = strings.Join(strings.Fields(course.Code), " ") // field這是去除中間空格等部份，然後join將結果拼接起來
+				// fmt.Println("code : %s", course.Code)
+				// for _, code := range course.Code {
+				// 	fmt.Println(code)
+				// }
+
+				log.Printf("course.code = %s, should not have space", course.Code)
 
 				// 優化課程名稱處理：將 <br> 換成空格
 				courseNameHTML, _ := e.DOM.Find("td[data-title='課程名稱'] > a").Html()
@@ -65,10 +71,37 @@ func main() {
 				var instructors []string
 				// --- 2. 修正此處的類型 ---
 				e.DOM.Find("td[data-title='授課教師'] a").Each(func(i int, s *goquery.Selection) {
-					instructors = append(instructors, s.Text())
+					instructors = append(instructors, strings.TrimSpace(s.Text()))
 				})
-				course.Instructor = strings.Join(instructors, "與")
+				// for _, content := range instructors {
+				// fmt.Println(len(instructors))
+				// fmt.Printf("instuctor %s, ", content)
+				// }
+				// log.Printf("\n")
+
+				
+				if len(instructors) > 1 && instructors[1] != "" { // i.e. above 2 people
+					// need except '' symbol
+
+					course.Instructor = strings.Join(instructors, "與")
+					// for _, content := range instructors {
+					// 	fmt.Printf("instructor = '%s', ", content)
+					// 	for __, char := range content {
+					// 		fmt.Printf("%d, %c ", __, char)
+
+					// 	}
+					// }
+					// fmt.Println()
+				} else {
+					// log.Printf("year = %s, term = %s, len instructors = %d\n", year, term, len(instructors))
+					// for _, content := range instructors {
+					// log.Println(content)
+					// }
+					// log.Println()
+					course.Instructor = instructors[0]
+				}
 				course.Instructor += "教授"
+				log.Printf("year = %s, term = %s, instuctor = %s", year, term, course.Instructor)
 				// 優化備註處理：保留換行並移除所有 HTML 標籤
 				notesHTML, _ := e.DOM.Find("td[data-title='備註']").Html()
 				// 我們從包含 HTML 標籤的 notesHTML 進行解析，因為我們的正則需要它
@@ -111,13 +144,13 @@ func main() {
 				term = "下"
 			}
 			// --- 在爬取完成後，寫入檔案前，呼叫新的排序函式 ---
-			fmt.Printf("\n爬取完成！共找到 %d 門課程，現正進行排序...\n", len(courses))
+			fmt.Printf("\n現正進行排序...\n")
 			courses = SortCoursesAsTeam(courses) // << --- 在這裡呼叫！
 			fmt.Println("排序完成！")
 
 			file_name := year + "學年" + term + "課程紀錄" + ".csv"
 			write_csv_file(file_name, courses, header)
-
+			term_int++ // forgot add
 		}
 		year_int++ // forgot
 
