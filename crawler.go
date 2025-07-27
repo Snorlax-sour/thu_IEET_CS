@@ -28,9 +28,9 @@ type Course struct {
 
 func main() {
 	var year, term string
-	year_int := 108
+	year_int := 109
 
-	for year_int <= 113 {
+	for year_int <= 114 {
 		term_int := 1
 		for term_int <= 2 {
 
@@ -79,8 +79,7 @@ func main() {
 				// }
 				// log.Printf("\n")
 
-				
-				if len(instructors) > 1 && instructors[1] != "" { // i.e. above 2 people
+				if len(instructors) > 1 && instructors[len(instructors)-1] != "" { // i.e. above 2 people
 					// need except '' symbol
 
 					course.Instructor = strings.Join(instructors, "與")
@@ -98,7 +97,19 @@ func main() {
 					// log.Println(content)
 					// }
 					// log.Println()
-					course.Instructor = instructors[0]
+					log.Println(instructors)
+					for index, content := range instructors {
+						log.Println(content, len(content))
+						if content == "" || len(content) == 0 {
+							continue
+						}
+						if len(course.Instructor) > 1 {
+							course.Instructor += "與"
+						}
+						log.Printf(" index = %d, now input: %s, full_string = %s", index, content, course.Instructor)
+						course.Instructor += content
+
+					}
 				}
 				course.Instructor += "教授"
 				log.Printf("year = %s, term = %s, instuctor = %s", year, term, course.Instructor)
@@ -137,7 +148,7 @@ func main() {
 			if err := c.Visit(url); err != nil {
 				log.Fatalf("無法訪問目標網址: %v", err)
 			}
-			header := []string{"選課代碼", "課程類別", "課程名稱", "學分數", "時數", "授課教師", "備註"}
+			header := []string{"選課代碼", "課程名稱", "課程類別", "修課年級與班級", "學分數", "時數", "授課教師", "備註"}
 			if term == "1" {
 				term = "上"
 			} else if term == "2" {

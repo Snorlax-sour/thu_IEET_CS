@@ -165,8 +165,8 @@ func write_csv_file(fileName string, contents []Course, header []string) error {
 	for _, course := range contents {
 		row := []string{
 			course.Code,
-			course.Type,
 			course.Name,
+			course.Type,
 			course.Grade,
 			course.Credits,
 			strconv.Itoa(course.Hours),
@@ -202,9 +202,9 @@ func ParseGradeFromNotes(notes string) string {
 		// matches[1] 就是我們捕獲的班級資訊，例如 "1A" 或 "3,4"
 		// 清理一下頭尾可能的多餘空白後回傳
 		return strings.TrimSpace(matches[1])
-	}else{
+	} else {
 		log.Printf("other info")
-		for _,content := range matches{
+		for _, content := range matches {
 			log.Println(content, notes)
 		}
 	}
