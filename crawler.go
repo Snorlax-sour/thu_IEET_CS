@@ -12,7 +12,8 @@ import (
 	"github.com/gocolly/colly/v2"
 )
 
-var gradeRegex = regexp.MustCompile(`\/\s*資工系\s*([A-Z0-9,]+)`)
+// // 新增：只匹配从 "/ 资工系" 开始的核心信息块
+// var gradeRegex = regexp.MustCompile(`/\s*资工系\s*([^<\n]+)`)
 
 // Course 結構用於儲存單一課程的資訊
 type Course struct {
@@ -59,7 +60,7 @@ func main() {
 				// 	fmt.Println(code)
 				// }
 
-				log.Printf("course.code = %s, should not have space", course.Code)
+				// log.Printf("course.code = %s, should not have space", course.Code)
 
 				// 優化課程名稱處理：將 <br> 換成空格
 				courseNameHTML, _ := e.DOM.Find("td[data-title='課程名稱'] > a").Html()
@@ -97,22 +98,22 @@ func main() {
 					// log.Println(content)
 					// }
 					// log.Println()
-					log.Println(instructors)
-					for index, content := range instructors {
-						log.Println(content, len(content))
+					// log.Println(instructors)
+					for _, content := range instructors {
+						// log.Println(content, len(content))
 						if content == "" || len(content) == 0 {
 							continue
 						}
 						if len(course.Instructor) > 1 {
 							course.Instructor += "與"
 						}
-						log.Printf(" index = %d, now input: %s, full_string = %s", index, content, course.Instructor)
+						// log.Printf(" index = %d, now input: %s, full_string = %s", index, content, course.Instructor)
 						course.Instructor += content
 
 					}
 				}
 				course.Instructor += "教授"
-				log.Printf("year = %s, term = %s, instuctor = %s", year, term, course.Instructor)
+				// log.Printf("year = %s, term = %s, instuctor = %s", year, term, course.Instructor)
 				// 優化備註處理：保留換行並移除所有 HTML 標籤
 				notesHTML, _ := e.DOM.Find("td[data-title='備註']").Html()
 				// 我們從包含 HTML 標籤的 notesHTML 進行解析，因為我們的正則需要它

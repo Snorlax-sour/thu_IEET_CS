@@ -188,21 +188,48 @@ func TestCalculateHours(t *testing.T) {
 
 // 測試 6: ParseGradeFromNotes (您已提供，非常完整，直接保留)
 func TestParseGradeFromNotes(t *testing.T) {
+
 	testCases := []struct {
 		name     string
-		input    string
+		input    string // 這次的 input 是包含 HTML 和換行符的原始字串
 		expected string
 	}{
-		{"Standard Grade 1A", `28019 資訊工程學系  / 資工系1A<BR>`, "1A"},
-		{"Multiple Grades with Comma", `28240 資訊工程學系  / 資工系2A,2B<BR>2A、2B併班`, "2A,2B"},
-		{"Master's Program ignored", `68001 資訊工程學系  / 資工碩2-4<BR>`, "未知"},
-		{"No match found", `這是一個沒有班級資訊的備註`, "未知"},
+		{
+			name:     "Handles real data: multiple groups in grade",
+			input:    "28043 資訊工程學系  / 資工系資電,軟工組3",
+			expected: "資電,軟工組3",
+		},
+		{
+			name:     "Handles real data: single grade",
+			input:    "24385 資訊工程學系  / 資工系1A",
+			expected: "1A",
+		},
+		{
+			name:     "Handles real data: stops at newline",
+			input:    "28240 資訊工程學系  / 資工系數創組3,軟工組3\n數創三、軟工三合班上課",
+			expected: "數創組3,軟工組3",
+		},
+		{
+			name:     "Handles real data: stops at html tag",
+			input:    "28532 資訊工程學系 / 資工系3A<br>資電組2",
+			expected: "3A",
+		},
+		{
+			name:     "No Anchor found",
+			input:    "這是一個沒有班級資訊的備註",
+			expected: "未知",
+		},
 	}
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			if actual := ParseGradeFromNotes(tc.input); actual != tc.expected {
-				t.Errorf("ParseGradeFromNotes(%q): expected %q, got %q", tc.input, tc.expected, actual)
+			// *** 關鍵 ***: 這次我們直接用原始 input 進行測試，
+			// 因為我們的函式現在被設計用來處理這種原始字串。
+			actual := ParseGradeFromNotes(tc.input)
+
+			if actual != tc.expected {
+				t.Errorf("ParseGradeFromNotes on input %q:\n  - expected: %q\n  - actual:   %q",
+					tc.input, tc.expected, actual)
 			}
 		})
 	}

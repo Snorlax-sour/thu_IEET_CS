@@ -3,7 +3,8 @@ package main
 import (
 	"encoding/csv" // <-- 新增: CSV 套件
 	"fmt"
-	"log"
+
+	// "log"
 	"os" // <-- 新增: 檔案系統套件
 	"regexp"
 	"sort"
@@ -194,21 +195,42 @@ func calculateHours(timeStr string) int {
 	return len(matches)
 }
 func ParseGradeFromNotes(notes string) string {
-	// 使用正則表達式尋找匹配項
-	matches := gradeRegex.FindStringSubmatch(notes)
+	// 步驟 1: 定義我們的錨點
+    anchor := "/ 資工系"
 
-	// 如果找到了匹配項 (長度為 2：全匹配 + 1個捕獲組)
-	if len(matches) == 2 {
-		// matches[1] 就是我們捕獲的班級資訊，例如 "1A" 或 "3,4"
-		// 清理一下頭尾可能的多餘空白後回傳
-		return strings.TrimSpace(matches[1])
-	} else {
-		log.Printf("other info")
-		for _, content := range matches {
-			log.Println(content, notes)
-		}
-	}
+    // 步驟 2: 使用 strings.Cut 找到錨點之後的內容
+    _, after, found := strings.Cut(notes, anchor)
+    if !found {
+        // 如果連錨點都找不到，直接返回 "未知"
+        return "未知"
+    }
 
-	// 如果找不到，回傳一個預設值 "未知"
-	return "未知"
+    // 步驟 3: 從 'after' 中，提取我們需要的核心資訊
+    // 我們的核心資訊在換行符 (\n) 或 HTML 標籤 (<) 之前
+    coreInfo := after
+    
+    // 找到第一個終止符號
+    endIndex := len(coreInfo) // 預設為字串結尾
+    if newlineIndex := strings.Index(coreInfo, "\n"); newlineIndex != -1 {
+        endIndex = newlineIndex
+    }
+    if tagIndex := strings.Index(coreInfo, "<"); tagIndex != -1 && tagIndex < endIndex {
+        endIndex = tagIndex
+    }
+
+    // 根據找到的終止符號，截取核心資訊
+    coreInfo = coreInfo[:endIndex]
+    
+    // 步驟 4: 對核心資訊做最後的清理並回傳
+    // 移除所有多餘的 "資工系" (以防萬一)
+    coreInfo = strings.ReplaceAll(coreInfo, "資工系", "")
+    
+    // 清理頭尾空白
+    cleanedInfo := strings.TrimSpace(coreInfo)
+
+    if cleanedInfo == "" {
+        return "未知"
+    }
+    
+    return cleanedInfo
 }
